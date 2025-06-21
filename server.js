@@ -4,11 +4,15 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
+  origin: ['http://localhost:3000', 'https://notes-frontend-cyan.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
+app.options('*', cors()); // handle preflight
 
 app.use(express.json());
 
