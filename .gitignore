@@ -1,0 +1,29 @@
+# Node modules (backend and frontend)
+node_modules/
+client/node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# dotenv environment variables
+.env
+
+# OS-related
+.DS_Store
+Thumbs.db
+
+# Build output (React)
+client/build/
+client/dist/
+
+# VS Code settings
+.vscode/
+
+# Coverage from testing tools
+coverage/
+
+# Optional: if you use yarn or pnpm
+yarn.lock
+pnpm-lock.yaml
