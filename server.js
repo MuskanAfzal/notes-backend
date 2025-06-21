@@ -5,14 +5,23 @@ require('dotenv').config();
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://notes-frontend-cyan.vercel.app'
+];
+
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://notes-frontend-cyan.vercel.app'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
-
-app.options('*', cors()); // handle preflight
 
 app.use(express.json());
 
