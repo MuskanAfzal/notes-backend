@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("DB connected"))
   .catch(err => console.error(err));
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
+app.use('/api/auth', require('./routes/Auth'));
+app.use('/api/notes', require('./routes/Notes'));
 
 app.listen(8080, () => console.log("🚀 Server running on port 8080"));
